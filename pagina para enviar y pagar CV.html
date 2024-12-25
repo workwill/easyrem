@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyRem - Enviar CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos de la página */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #161b22;
+            color: #58a6ff;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            font-weight: 700;
+        }
+        header p {
+            margin: 10px 0;
+            font-size: 1.3em;
+            color: #bbb;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        footer {
+            background-color: #161b22;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>EasyRem</h1>
+        <p>Conectando talentos remotos con las mejores oportunidades globales</p>
+    </header>
+
+    <div class="container">
+        <h2>Enviar tu CV</h2>
+        <p>Para enviar tu currículum, puedes realizar un pago de $5 o hacer una donación desde $1 para continuar.</p>
+
+        <!-- Botón para abrir el modal -->
+        <a href="javascript:void(0);" class="cta-button" id="openModalBtn">Enviar CV</a>
+        <script src="https://www.paypal.com/sdk/js?client-id=BAAhwthvBTnAQd49mgMi9M1iFMiIO0OjJVeWn_VRQycOY8lv2dkhylIgWtwgC-B3zbAHLsMUtJNmJyMZC0&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+<div id="paypal-container-TE3X6ZR8LZYHU"></div>
+<script>
+  paypal.HostedButtons({
+    hostedButtonId: "TE3X6ZR8LZYHU",
+  }).render("#paypal-container-TE3X6ZR8LZYHU")
+</script>
+
+        <!-- Modal -->
+        <div class="modal" id="paymentModal">
+            <div class="modal-content">
+                <span class="close" id="closeModalBtn">&times;</span>
+                <h2>Elige cómo pagar o donar</h2>
+                <p>Realiza un pago de $5 o una donación desde $1 para enviar tu currículum.</p>
+                <div id="paypal-container"></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 EasyRem. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAhwthvBTnAQd49mgMi9M1iFMiIO0OjJVeWn_VRQycOY8lv2dkhylIgWtwgC-B3zbAHLsMUtJNmJyMZC0&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+
+    <script>
+        // Obtener elementos del modal
+        const modal = document.getElementById('paymentModal');
+        const openModalBtn = document.getElementById('openModalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        // Abrir el modal cuando se hace clic en "Enviar CV"
+        openModalBtn.onclick = function() {
+            modal.classList.add('show');
+            loadPayPalButton(); // Cargar el botón de PayPal
+        }
+
+        // Cerrar el modal cuando se hace clic en la X
+        closeModalBtn.onclick = function() {
+            modal.classList.remove('show');
+        }
+
+        // Integración de PayPal
+        function loadPayPalButton() {
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: '5.00'
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('Gracias, ' + details.payer.name.given_name + '. Tu pago fue exitoso.');
+                        window.location.href = "mailto:remotejobsrh@gmail.com?subject=Envío de CV&body=Adjunto mi currículum para su revisión.";
+                    });
+                },
+                onCancel: function(data) {
+                    alert('El pago fue cancelado.');
+                }
+            }).render('#paypal-container');
+        }
+    </script>
+</body>
+</html>
