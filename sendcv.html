@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
             color: #333;
             overflow-x: hidden;
         }
+
         header {
             background-color: #161b22;
             color: #58a6ff;
@@ -22,11 +24,13 @@
             text-align: center;
             position: relative;
         }
+
         header h1 {
             margin: 0;
             font-size: 2.8em;
             font-weight: 700;
         }
+
         header p {
             margin: 10px 0;
             font-size: 1.3em;
@@ -53,6 +57,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1>EasyRem</h1>
@@ -65,13 +70,14 @@
 
         <!-- Botón para abrir el modal -->
         <a href="javascript:void(0);" class="cta-button" id="openModalBtn">Enviar CV</a>
-        <script src="https://www.paypal.com/sdk/js?client-id=BAAhwthvBTnAQd49mgMi9M1iFMiIO0OjJVeWn_VRQycOY8lv2dkhylIgWtwgC-B3zbAHLsMUtJNmJyMZC0&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
-<div id="paypal-container-TE3X6ZR8LZYHU"></div>
-<script>
-  paypal.HostedButtons({
-    hostedButtonId: "TE3X6ZR8LZYHU",
-  }).render("#paypal-container-TE3X6ZR8LZYHU")
-</script>
+        <script
+            src="https://www.paypal.com/sdk/js?client-id=BAAhwthvBTnAQd49mgMi9M1iFMiIO0OjJVeWn_VRQycOY8lv2dkhylIgWtwgC-B3zbAHLsMUtJNmJyMZC0&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+        <div id="paypal-container-TE3X6ZR8LZYHU"></div>
+        <script>
+            paypal.HostedButtons({
+                hostedButtonId: "TE3X6ZR8LZYHU",
+            }).render("#paypal-container-TE3X6ZR8LZYHU")
+        </script>
 
         <!-- Modal -->
         <div class="modal" id="paymentModal">
@@ -88,7 +94,10 @@
         </footer>
     </div>
 
-    <!-- PayPal SDK -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="./particles.js"></script>
+
+        <!-- PayPal SDK -->
     <script src="https://www.paypal.com/sdk/js?client-id=BAAhwthvBTnAQd49mgMi9M1iFMiIO0OjJVeWn_VRQycOY8lv2dkhylIgWtwgC-B3zbAHLsMUtJNmJyMZC0&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
 
     <script>
@@ -98,20 +107,20 @@
         const closeModalBtn = document.getElementById('closeModalBtn');
 
         // Abrir el modal cuando se hace clic en "Enviar CV"
-        openModalBtn.onclick = function() {
+        openModalBtn.onclick = function () {
             modal.classList.add('show');
             loadPayPalButton(); // Cargar el botón de PayPal
         }
 
         // Cerrar el modal cuando se hace clic en la X
-        closeModalBtn.onclick = function() {
+        closeModalBtn.onclick = function () {
             modal.classList.remove('show');
         }
 
         // Integración de PayPal
         function loadPayPalButton() {
             paypal.Buttons({
-                createOrder: function(data, actions) {
+                createOrder: function (data, actions) {
                     return actions.order.create({
                         purchase_units: [{
                             amount: {
@@ -120,17 +129,18 @@
                         }]
                     });
                 },
-                onApprove: function(data, actions) {
-                    return actions.order.capture().then(function(details) {
+                onApprove: function (data, actions) {
+                    return actions.order.capture().then(function (details) {
                         alert('Gracias, ' + details.payer.name.given_name + '. Tu pago fue exitoso.');
                         window.location.href = "mailto:remotejobsrh@gmail.com?subject=Envío de CV&body=Adjunto mi currículum para su revisión.";
                     });
                 },
-                onCancel: function(data) {
+                onCancel: function (data) {
                     alert('El pago fue cancelado.');
                 }
             }).render('#paypal-container');
         }
     </script>
 </body>
+
 </html>

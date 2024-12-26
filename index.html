@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
             color: #c9d1d9;
             overflow-x: hidden;
         }
+
         header {
             background-color: #161b22;
             color: #58a6ff;
@@ -21,15 +23,31 @@
             text-align: center;
             position: relative;
             z-index: 1;
+
+            .logo {
+                width: 100%;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+            }
         }
+
         header h1 {
             margin: 0;
             font-size: 2.5em;
         }
+
         header p {
             margin: 10px 0 0;
             font-size: 1.2em;
         }
+
+        .particles-js-canvas-el {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -37,13 +55,16 @@
             position: relative;
             z-index: 1;
         }
+
         .section {
             margin-bottom: 40px;
         }
+
         .section h2 {
             font-size: 2em;
             margin-bottom: 20px;
         }
+
         .cta-button {
             display: inline-block;
             background-color: #58a6ff;
@@ -54,9 +75,11 @@
             font-size: 1.2em;
             font-weight: bold;
         }
+
         .cta-button:hover {
             background-color: #1f6feb;
         }
+
         .job-listing {
             background-color: #161b22;
             border: 1px solid #21262d;
@@ -68,25 +91,30 @@
             align-items: center;
             gap: 20px;
         }
+
         .job-listing img {
             width: 80px;
             height: 80px;
             border-radius: 10px;
             object-fit: cover;
         }
+
         .job-listing h3 {
             color: #58a6ff;
         }
+
         footer {
             background-color: #161b22;
             color: #c9d1d9;
             text-align: center;
             padding: 20px;
         }
+
         footer p {
             margin: 0;
             font-size: 1em;
         }
+
         #particles-js {
             position: absolute;
             width: 100%;
@@ -96,20 +124,31 @@
             z-index: 0;
             background-color: #0d1117;
         }
+
+        @media (max-width: 576px) {
+            .cta-button {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <div id="particles-js"></div>
     <header>
+        <div class="logo">
             <img src="img/easyrem.png" alt="EasyRem Logo" style="width: 50px; height: auto; vertical-align: middle; margin-right: 10px; border-radius: 80%;">
-            <h1 style="display: inline; font-size: 3em; color: #58a6ff; text-transform: uppercase; font-weight: bold; letter-spacing: 2px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);">Ea$yRem
+            <h1 style="display: inline; font-size: 3em; color: #58a6ff; text-transform: uppercase; font-weight: bold; letter-spacing: 2px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);">Ea$yRem</h1>
+        </div>
         <h3>Conectando talentos remotos con las mejores oportunidades globales</h3>
     </header>
+    
     <div class="container">
         <!-- Hero Section -->
         <section class="section" id="hero">
             <h2>¡Tu próximo trabajo remoto te espera!</h2>
-            <p>Accede a ofertas de trabajo remoto en todo el mundo y recursos exclusivos para destacar en el mercado laboral.</p>
+            <p>Accede a ofertas de trabajo remoto en todo el mundo y recursos exclusivos para destacar en el mercado
+                laboral.</p>
             <a href="second.html" target="_blank" class="cta-button">Descargar plantilla de CV gratis</a>
         </section>
         <!-- Featured Jobs Section -->
@@ -132,7 +171,7 @@
                     <p>Empresa: Creative Studio Co.</p>
                     <p>Ubicación: Remoto</p>
                     <p>Salario: $30,000 - $45,000 USD/año</p>
-                    <a href="second.html" target="_blank"  class="cta-button">Postúlate ahora</a>
+                    <a href="second.html" target="_blank" class="cta-button">Postúlate ahora</a>
                 </div>
             </div>
             <div class="job-listing">
@@ -188,65 +227,14 @@
             <a href="#" class="cta-button">Acceder a recursos</a>
         </section>
     </div>
+
     <footer>
         <p>&copy; 2024 EasyRem. Todos los derechos reservados.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 100,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": { "value": "#58a6ff" },
-                "shape": {
-                    "type": "circle",
-                    "stroke": { "width": 0, "color": "#000000" }
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": false
-                },
-                "size": {
-                    "value": 5,
-                    "random": true
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#58a6ff",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 3,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": { "enable": true, "mode": "repulse" },
-                    "onclick": { "enable": true, "mode": "push" },
-                    "resize": true
-                },
-                "modes": {
-                    "repulse": { "distance": 100, "duration": 0.4 },
-                    "push": { "particles_nb": 4 }
-                }
-            },
-            "retina_detect": true
-        });
-    </script>
+    <script src="./particles.js"></script>
+
 </body>
+
 </html>
